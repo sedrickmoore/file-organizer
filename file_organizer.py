@@ -67,7 +67,7 @@ def organize_files(source_folder):
 
 def main():
     parser = argparse.ArgumentParser(description="Organize files in a specified folder.")
-    parser.add_argument("folder_path", help="Path to the folder to organize")
+    parser.add_argument("folder_path", help="Full path to the folder you organize")
     args = parser.parse_args()
 
     organize_files(args.folder_path)
