@@ -14,6 +14,8 @@ Moves files to the appropriate folder based on their extensions.
 
 Ensures all uncategorized files are placed in the Others/ folder.
 
+Use a JSON file to create custom categories.
+
 ### Installation
 
 Ensure you have Python installed (version 3.x recommended).
@@ -28,9 +30,11 @@ cd file-organizer
 
 Run the script with Python:
 
-`python3 file_organizer.py <folder_path>`
+`python3 file_organizer.py <full_folder_path> --config <full_path_to_json>`
 
 Must use the path to the folder as a command line argument.
+
+Config file (JSON) is optional.
 
 ### Future Enhancements
 
