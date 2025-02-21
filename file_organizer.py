@@ -1,6 +1,7 @@
 import os
 import shutil
 import argparse
+import json
 
 def organize_files(source_folder):
     # Organizes files in the specified folder into categorized subfolders.

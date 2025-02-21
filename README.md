@@ -35,5 +35,3 @@ Must use the path to the folder as a command line argument.
 ### Future Enhancements
 
 Add real-time file monitoring to organize files automatically.
-
-Allow users to define custom file categories through a config file.
