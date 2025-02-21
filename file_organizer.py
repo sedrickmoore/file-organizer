@@ -1,17 +1,16 @@
 import os
 import shutil
 import argparse
+import json
 
-def organize_files(source_folder):
-    # Organizes files in the specified folder into categorized subfolders.
-    print(f"Checking folder: {source_folder}")
+# Define categories and their corresponding file extensions using a JSON file.
+# Other, default categories are defined.
 
-    if not os.path.exists(source_folder):
-        print(f"Error: The folder '{source_folder}' does not exist.")
-        return
-
-    # Define categories and their corresponding file extensions
-    categories = {
+def load_categories(config_file):
+    if os.path.exists(config_file):
+        with open(config_file, 'r') as file:
+            return json.load(file)
+    else: return {
         "Images": [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".svg", ".tiff", ".webp"],
         "Videos": [".mp4", ".mov", ".avi", ".mkv", ".flv", ".wmv", ".mpeg"],
         "Documents": [".pdf", ".docx", ".doc", ".txt", ".xlsx", ".xls", ".csv", ".pptx", ".ppt", ".odt"],
@@ -20,7 +19,15 @@ def organize_files(source_folder):
         "Code": [".py", ".js", ".java", ".cpp", ".c", ".cs", ".html", ".css", ".php", ".sh", ".rb", ".go", ".swift"],
         "Executables": [".exe", ".bat", ".msi", ".sh", ".apk", ".app", ".dmg"],
         "Others": []
-    }
+        }
+
+def organize_files(source_folder, categories):
+    # Organizes files in the specified folder into categorized subfolders.
+    print(f"Checking folder: {source_folder}")
+
+    if not os.path.exists(source_folder):
+        print(f"Error: The folder '{source_folder}' does not exist.")
+        return
 
     # Create subfolders if they don't exist
     for category in categories:
@@ -68,9 +75,11 @@ def organize_files(source_folder):
 def main():
     parser = argparse.ArgumentParser(description="Organize files in a specified folder.")
     parser.add_argument("folder_path", help="Full path to the folder you organize")
+    parser.add_argument("--config", help="Path to JSON config file for categories", default="categories.json")
     args = parser.parse_args()
+    categories = load_categories(args.config)
 
-    organize_files(args.folder_path)
+    organize_files(args.folder_path, categories)
 
 if __name__ == "__main__":
     main()
