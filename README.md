@@ -28,15 +28,11 @@ cd file-organizer
 
 Run the script with Python:
 
-`python3 file_organizer.py`
+`python3 file_organizer.py <folder_path>`
 
-Enter the path of the folder you want to organize when prompted.
-
-Alternatively, modify the script to specify the folder path directly in the organize_files() function.
+Must use the path to the folder as a command line argument.
 
 ### Future Enhancements
-
-Implement CLI arguments for specifying the folder path without user input.
 
 Add real-time file monitoring to organize files automatically.
 
