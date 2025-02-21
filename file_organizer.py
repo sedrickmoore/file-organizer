@@ -1,5 +1,6 @@
 import os
 import shutil
+import argparse
 
 def organize_files(source_folder):
     # Organizes files in the specified folder into categorized subfolders.
@@ -65,8 +66,11 @@ def organize_files(source_folder):
 
 
 def main():
-    folder_path = input("Enter the path of the folder to organize: ")
-    print(f"User entered path: {folder_path}")
-    organize_files(folder_path)
+    parser = argparse.ArgumentParser(description="Organize files in a specified folder.")
+    parser.add_argument("folder_path", help="Path to the folder to organize")
+    args = parser.parse_args()
 
-main()
+    organize_files(args.folder_path)
+
+if __name__ == "__main__":
+    main()
